@@ -9,7 +9,7 @@ parse:
   # https://jupyterbook.org/content/content-blocks.html#using-substitutions-in-links
   myst_substitutions:
     hackweek: "SnowEx Hackweek"
-    dates: "July 11-15 2022"
+    dates: "Aug 19-23, 2024"
     github_org_url: "https://github.com/snowex-hackweek"
     book_repo: "website-2024"
     website_url: "https://snowex-2024.hackweek.io"
