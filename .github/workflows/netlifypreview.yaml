@@ -41,6 +41,7 @@ jobs:
         deploy-message: "Deploy from GitHub Actions"
         enable-github-deployment: false
         enable-commit-status: false
+        enable-commit-comment: false
         enable-pull-request-comment: true
         overwrites-pull-request-comment: true
         alias: deploy-preview-${{ github.event.number }}
