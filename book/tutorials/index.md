@@ -1,6 +1,6 @@
 # Tutorials
 
-These tutorials consist of Jupyter Notebooks that can be run in our
+These Tutotrials consist of Jupyter Notebooks that can be run in our
 {{ '[preconfigured software environment]({url})'.format(url=jupyterhub_url) }}
 If you are attending the hackweek, you have access to a JupyterHub environment
 with all the necessary Python software packages installed that are needed to run
