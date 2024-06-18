@@ -1,4 +1,4 @@
-# Tutorials
+# A Great Tutorial
 
 These Tutotrials consist of Jupyter Notebooks that can be run in our
 {{ '[preconfigured software environment]({url})'.format(url=jupyterhub_url) }}
