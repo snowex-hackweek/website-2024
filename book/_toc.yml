@@ -21,6 +21,17 @@ parts:
     - file: tutorials/index
       sections:
         - file: tutorials/example/tutorial-notebook
+        - file: tutorials/snowex_database/index
+          title: Introduction to the SnowEx Database
+          sections:
+            - file: tutorials/snowex_database/1_getting_started_example
+            - file: tutorials/snowex_database/2_database_structure
+            - file: tutorials/snowex_database/3_forming_queries
+            - file: tutorials/snowex_database/4_get_spiral_example
+            - file: tutorials/snowex_database/5_plot_raster_example
+            - file: tutorials/snowex_database/6_exporting_data
+            - file: tutorials/snowex_database/7_bonus_challenge
+            - file: tutorials/snowex_database/8_wrap_up
 - caption: Projects
   chapters:
     - file: projects/list_of_projects
