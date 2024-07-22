@@ -32,7 +32,7 @@ execute:
   # NOTE: 'cache' to use jupyter-cache, or 'force' to run all
   execute_notebooks: 'force'
   exclude_patterns:
-    - "**/geospatial-advanced.ipynb"
+    - "**/aviris-ng-data.ipynb"
   allow_errors: false
   # Per-cell notebook execution limit (seconds)
   timeout: 300
