@@ -1,0 +1,4 @@
+# SnowEx Albedo data
+
+```{tableofcontents}
+```
