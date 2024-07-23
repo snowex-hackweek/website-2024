@@ -15,7 +15,7 @@ parse:
     website_url: "https://snowex-2024.hackweek.io"
     jupyterhub_url: "https://hub.cryointhecloud.com/"
     slack_workspace_url: "https://2024-uw-hackweek.slack.com"
-    contact_email: "uwhackweek@uw.edu"
+    contact_email: "escience-hackweeks@uw.edu"
     anon_reporting_url: "https://INSERT_FORM_LINK"
   myst_enable_extensions:
     # Defaults
@@ -32,7 +32,7 @@ execute:
   # NOTE: 'cache' to use jupyter-cache, or 'force' to run all
   execute_notebooks: 'force'
   exclude_patterns:
-    - "**/geospatial-advanced.ipynb"
+    - "**/aviris-ng-data.ipynb"
   allow_errors: false
   # Per-cell notebook execution limit (seconds)
   timeout: 300
@@ -48,7 +48,7 @@ launch_buttons:
 
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/uwhackweek/jupyterbook-template # Online location of your book
+  url: https://github.com/snowex-hackweek/website-2024 # Online location of your book
   path_to_book: book  # Optional path to your book, relative to the repository root
   branch: main  # Which branch of the repository should be used when creating links (optional)
 

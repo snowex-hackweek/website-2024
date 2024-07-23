@@ -21,6 +21,10 @@ parts:
     - file: tutorials/index
       sections:
         - file: tutorials/example/tutorial-notebook
+        - file: tutorials/albedo/index
+          title: Albedo
+          sections:
+            - file: tutorials/albedo/aviris-ng-data
         - file: tutorials/snowex_database/index
           title: Introduction to the SnowEx Database
           sections:
