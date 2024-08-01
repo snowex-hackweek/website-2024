@@ -30,6 +30,7 @@ check_success() {
   fi
 }
 
+# Disable event page build
 # printf "Building the splash page -"
 # cookiecutter ../. -f --no-input -o ../book/_build
 
