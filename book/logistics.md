@@ -19,13 +19,13 @@
 ## Dorms
 
 * Dorms are all single/double rooms and each contain a private bathroom.
-* Participants who opt to will be staying at Willow Hall. Please Check in after
-  2pm at the front desk on Sunday, July 10th.
-* Check out is by 11am on Saturday, July 16th. There will be a room where you
+* Participants who opt to will be staying at Lander Hall. Please Check in after
+  2pm at the front desk on Sunday, August 18th (or Saturday, August 17th if arriving early).
+* Check out is by 11am on Saturday, August 23rd (or Sunday, August 24th if staying an extra day). There will be a room where you
   can store your luggage if your flight leaves later that day. Please let us
   know immediately by emailing {{ contact_email }} if you plan on
   arriving/departing at an earlier/later date.
-* The front desk can direct you to the Maple Hall Great Room where the meetings
+* The front desk can direct you to the Health Sciences Education Building where the meetings
   and courses will be taking place.
 * Dorm guests are able to use their key cards to access any gyms on campus. For
   off-campus activities, guests have easy access to The Ave, which hosts a
