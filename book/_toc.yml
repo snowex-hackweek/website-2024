@@ -31,7 +31,7 @@ parts:
             - file: tutorials/Data_access/NSIDC_resources.md
             - file: tutorials/Data_access/earthdata_search.md
             - file: tutorials/Data_access/earthaccess_snowex.ipynb
-            - file: tutorials/Data_access/earthaccess-icesat2.ipynb
+            - file: tutorials/Data_access/earthaccess_icesat2.ipynb
 - caption: Projects
   chapters:
     - file: projects/index
