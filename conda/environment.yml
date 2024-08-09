@@ -7,6 +7,7 @@ name: hackweek
 channels:
   - conda-forge
 dependencies:
+  - earthaccess>=0.10.0
   - ipyleaflet
   - jupyter-book<2
   - jupyter-resource-usage
