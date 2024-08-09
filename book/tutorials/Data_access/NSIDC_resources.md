@@ -1,6 +1,6 @@
 # Exploring NSIDC DAAC resources
 
-### Learning Objectives
+## Learning Objectives
 
 Explore various resources for learning about and accessing ICESat-2, SnowEx, and other NASA Earthdata.
 
@@ -9,7 +9,7 @@ ___
 Reach out to us with data discovery and access questions!  Real people read the emails sent to nsidc@nsidc.org.  We are here to help make sure you get the data you need for your analysis.
 ___
 
-### NASA National Snow and Ice Data Center Distributed Active Archive Center (NSIDC DAAC)
+## NASA National Snow and Ice Data Center Distributed Active Archive Center (NSIDC DAAC)
 
 [The National Snow and Ice Data Center](https://nsidc.org) provides over 1100 data sets covering the Earth's cryosphere and more, all of which are available to the public free of charge. Beyond providing these data, NSIDC creates tools for data access, supports data users, performs scientific research, and educates the public about the cryosphere. 
 
@@ -19,7 +19,7 @@ ___
 </center>
 </figure>
    
-### Data set documentation, tools, and services at nsidc.org:
+## Data set documentation, tools, and services at nsidc.org:
 
 * [The NSIDC ICESat-2 home page](https://nsidc.org/data/icesat-2) provides an overview of the data products and available user resources. 
     * Associated access, visualization, and data customization tools and services are provided on the [ICESat-2 Tools page](https://nsidc.org/data/icesat-2/tools).
@@ -35,7 +35,7 @@ ___
 </center>
 </figure>
 
-### Data Exploration in Earthdata Search
+## Data Exploration in Earthdata Search
 
 https://search.earthdata.nasa.gov/search
 
@@ -53,7 +53,7 @@ Key Functions of Earthdata Search:
 </figure>
 
 
-### ICESat-2 Data Exploration in OpenAltimetry
+## ICESat-2 Data Exploration in OpenAltimetry
 
 https://openaltimetry.org/
 
@@ -71,9 +71,9 @@ OpenAltimetry tutorials:
 
 [OpenAltimetry Tutorial](https://www.youtube.com/watch?v=ZanKXh1oQYc)  by Walt Meier, NSIDC DAAC Scientist.
 
-### Data Exploration using the SnowEx SQL Database
+## Data Exploration using the SnowEx SQL Database
 
 GitHub repository:  https://github.com/SnowEx/snowexsql
 
-### Hackweek Project: SnowEx Data Set Mapping Tool
+## Hackweek Project: SnowEx Data Set Mapping Tool
 SnowEx project lead by Jesslyn Di Fiori, NSIDC. This project aims to build a map-based web tool for cross-referencing SnowEx data sets.
