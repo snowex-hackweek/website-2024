@@ -1,6 +1,6 @@
 # Conda environment management
 
-**The only file you should need to edit in this folder is `conda/environment.yml`. This file defines the set of conda-packages needed to render the full website.**
+**The only file you should need to manually edit in this folder is `conda/environment.yml`. This file defines the set of conda-packages needed to render the full website.**
 
 Although we refer to "conda" environments, we recommend using [mamba](https://github.com/mamba-org/mamba) as a drop in replacement for the `conda` package manager. Mamba performs operations in parallel, which we've found to be important for creating complex hackweek environments involving many packages!
 
