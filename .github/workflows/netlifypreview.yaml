@@ -20,13 +20,17 @@ jobs:
     - name: Configure NASA Earthdata Login
       continue-on-error: true
       env:
-        EARTHDATA_USER: ${{ secrets.EARTHDATA_USER}}
-        EARTHDATA_PASS: ${{ secrets.EARTHDATA_PASS }}
+        EARTHDATA_USERNAME: ${{ secrets.EARTHDATA_USERNAME}}
+        EARTHDATA_PASSWORD: ${{ secrets.EARTHDATA_PASSWORD }}
       run: |
-        echo "machine urs.earthdata.nasa.gov login $EARTHDATA_USER password $EARTHDATA_PASS" > ~/.netrc
+        echo "machine urs.earthdata.nasa.gov login $EARTHDATA_USERNAME password $EARTHDATA_PASSWORD" > ~/.netrc
         chmod 0600 ~/.netrc
 
     - uses: ./.github/actions/buildresources
+      # Expose login as ENV vars for alternative earthaccess login
+      env:
+        EARTHDATA_USERNAME: ${{ secrets.EARTHDATA_USERNAME}}
+        EARTHDATA_PASSWORD: ${{ secrets.EARTHDATA_PASSWORD }}
       with:
         jb-cache: false
         publish-to-gh: false
