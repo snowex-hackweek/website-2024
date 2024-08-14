@@ -1,0 +1,15 @@
+- title: Gail Reckase
+  avatar: https://avatars.githubusercontent.com/egreckase
+  role: Data Support Specialist
+  organizations:
+    - name: NSIDC DAAC
+  expertise:
+    - open science
+    - GIS
+    - User Services
+  social:
+    - icon: github
+      link: https://github.com/egreckase
+  user_groups:
+    - Tutorial contributor
+
