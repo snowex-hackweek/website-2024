@@ -7,6 +7,9 @@ The purpose of this overview is to introduce some of the data search and access 
 ## Prerequisites
 
 None
+## Credits
+
+Andy Barrett, NSIDC DAAC 
 
 ## Modes of Data Access
 

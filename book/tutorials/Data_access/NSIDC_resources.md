@@ -4,6 +4,7 @@
 
 Explore various resources for learning about and accessing ICESat-2, SnowEx, and other NASA Earthdata.
 
+Credits: Mikala Beig, Gail Reckase, and the NSIDC DAAC Data Use and Education Team
 ___
 
 Reach out to us with data discovery and access questions!  Real people read the emails sent to nsidc@nsidc.org.  We are here to help make sure you get the data you need for your analysis.
@@ -13,11 +14,7 @@ ___
 
 [The National Snow and Ice Data Center](https://nsidc.org) provides over 1100 data sets covering the Earth's cryosphere and more, all of which are available to the public free of charge. Beyond providing these data, NSIDC creates tools for data access, supports data users, performs scientific research, and educates the public about the cryosphere. 
 
-<figure>
-<center>
-   <img width="80%" src='./images/DAAC_map_with_ECS.jpg'/>
-</center>
-</figure>
+![Map with NASA DAACs](./images/DAAC_map_with_ECS.jpg)
    
 ## Data set documentation, tools, and services at nsidc.org:
 
@@ -29,11 +26,7 @@ ___
     * [ATL06 landing page](https://nsidc.org/data/atl06)
     * [SNEX23_MAR22_SD landing page](https://nsidc.org/data/snex23_mar22_sd)
 
-<figure>
-<center> 
-<img width="80%"" src='./images/atl06_landing_page.png'/>
-</center>
-</figure>
+![ATL06 landing page](./images/atl06_landing_page.png)
 
 ## Data Exploration in Earthdata Search
 
@@ -46,16 +39,11 @@ Key Functions of Earthdata Search:
 2. Customization services, including spatial subsetting, reformatting, and reprojection for *some* datasets.
 3. Data ordering and downloading.
 
-<figure>
-<center> 
-<img width="80%" src='./images/EDSC_snowex23.png'/>     
-</center>
-</figure>
-
+![SnowEx23 data set in Earthdata Search](./images/EDSC_snowex23.png)
 
 ## ICESat-2 Data Exploration in OpenAltimetry
 
-https://openaltimetry.org/
+https://openaltimetry.earthdatacloud.nasa.gov/data/
 
 OpenAltimetry is a cyberinfrastructure platform for discovery, access, and visualization of data from NASA’s ICESat and ICESat-2 missions. The unique data from these missions require a new paradigm for data access and discovery. OpenAltimetry addresses the needs of a diverse scientific community and increases the accessibility and utility of these data for new users. OpenAltimetry is a NASA funded collaborative project between the Scripps Institution of Oceanography, San Diego Supercomputer Center, National Snow and Ice Data Center, and UNAVCO.
 
