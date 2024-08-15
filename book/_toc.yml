@@ -24,6 +24,11 @@ parts:
           title: Albedo
           sections:
             - file: tutorials/albedo/aviris-ng-data
+        - file: tutorials/swesarr/index
+          title: SWESARR
+          sections:
+            - file: tutorials/swesarr/swesarr_tut
+
 - caption: Projects
   chapters:
     - file: projects/index
