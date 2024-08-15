@@ -24,7 +24,7 @@ parts:
           title: Albedo
           sections:
             - file: tutorials/albedo/aviris-ng-data
-     - file: tutorials/snowex-core/index
+        - file: tutorials/snowex-core/index
           title: Data Overview
           sections:
             - file: tutorials/albedo/01_snowex_data_overview
