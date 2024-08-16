@@ -41,6 +41,10 @@ parts:
             - file: tutorials/snowex_database/4_get_spiral_example
             - file: tutorials/snowex_database/5_plot_raster_example
             - file: tutorials/snowex_database/6_wrap_up
+        - file: tutorials/swesarr/index
+          title: SWESARR
+          sections:
+            - file: tutorials/swesarr/swesarr_tut
 - caption: Projects
   chapters:
     - file: projects/index
