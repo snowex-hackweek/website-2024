@@ -32,6 +32,10 @@ parts:
             - file: tutorials/Data_access/earthdata_search.md
             - file: tutorials/Data_access/earthaccess_snowex.ipynb
             - file: tutorials/Data_access/earthaccess_icesat2.ipynb
+        - file: tutorials/swesarr/index
+          title: SWESARR
+          sections:
+            - file: tutorials/swesarr/swesarr_tut
 - caption: Projects
   chapters:
     - file: projects/index
