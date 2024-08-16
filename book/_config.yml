@@ -34,6 +34,7 @@ execute:
   execute_notebooks: 'force'
   exclude_patterns:
     - "**/aviris-ng-data.ipynb"
+    - "**/earthaccess_icesat2.ipynb"
   allow_errors: false
   # Per-cell notebook execution limit (seconds)
   timeout: 300
@@ -58,6 +59,7 @@ bibtex_bibfiles:
   - references.bib
 sphinx:
   config:
+    suppress_warnings: ["mystnb.unknown_mime_type"]
     bibtex_reference_style: author_year  # or label, super, \supercite
     nb_custom_formats:
         .py:
