@@ -1,0 +1,412 @@
+---
+title: "Introduction to the NASA SnowEx Snow Albedo 2023 Dataset"
+author: "Anton Surunis"
+date: "2024-04-20"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+![Field spectrometer measurements in the SnowEx 2023 Snow Albedo Campaign](C:/Users/blueg/OneDrive/Grad%20School/SnowEx%20Hackweek/2024/field_specs.png)
+
+# The NASA SnowEx 2023 Snow Albedo Field Campaign Dataset
+
+The NASA SnowEx 2023 Snow Albedo Field Campaign took place in burned and unburned boreal forests around Fairbanks, Alaska. The goal of the campaign was to improve understanding of the spatial, temporal, and process-based variability of snow albedo and the uncertainty of snow albedo measurements across scales in boreal forests. The campaign objectives were to capture snow albedo across scales of snow accumulation and snowmelt with coincident snow albedo from ground-based spectrometer measurements, tower-mounted and drone-based radiation measurements, and airborne AVIRIS-NG overflights across boreal forest disturbance history.
+
+Over five weeks from April 1st to May 5th 2023, several teams visited field sites around Fairbanks and collected spectral measurements over 500m-1km transects capturing snow reflectance and snow albedo over gradients of landscape, topography, and forest disturbance variability. During days with favorable weather/clear sky conditions, teams walked transects in teams of three collecting observations of snow spectra using field spectrometers coincident with hyperspectral aerial and satellite observations from above.
+
+The purpose of this tutorial is to provide an introduction to accessing and using the resulting field dataset. First, a review of background information is provided. Then, we cover how to prepare and access the different data points provided in the dataset. Finally, we provide an example of how to calculate derived statistics from the dataset.
+
+# Review of Hyperspectral Data
+
+Incoming solar radiation is either reflected, absorbed, or transmitted (or a combination of all three) depending on the surface material. This spectral response allows us to identify varying surface types (e.g. vegetation, snow, water, etc.) in a remote sensing image. The spectral resolution, or the wavelength interval, determines the amount of detail recorded in the spectral response: finer spectral resolutions have bands with narrow wavelength intervals, while coarser spectral resolutions have bands with larger wavelength intervals, and therefore, less detail in the spectral response. ![https://www.neonscience.org/resources/learning-hub/tutorials/hyper-spec-intro](C:/Users/blueg/OneDrive/Grad%20School/SnowEx%20Hackweek/2024/em_spectrum.png)
+
+# Surface Reflectance vs Albedo
+
+Hyperspectral data is often captured as either albedo or surface reflectance.
+
+Albedo is the proportion of solar radiation that is reflected by a surface integrated over all incoming solar angles. This is accomplished by taking the ratio of down- and up-facing measurements of hemispherical radiation using a wide (180 degree) lens called a remote cosine receptor (RCR). Albedo is a very important property in calculating land surface energy exchange and snow-mass energy balance.
+
+![<https://www.scielo.br/j/rbg/a/98BNzSBYtyyw8YLPxVM9KTL/?lang=en>](C:/Users/blueg/OneDrive/Grad%20School/SnowEx%20Hackweek/2024/albedo_measure.png)
+
+ In contrast, surface reflectance is the proportion of solar radiation reflected over a single or very narrow incoming solar angle (usually 4-8 degrees). Surface reflectance is calculated by taking the ratio of reflected solar radiation from a surface relative and that of a white reference.
+
+![<https://www.mps.mpg.de/planetary-science/moon-surface>](C:/Users/blueg/OneDrive/Grad%20School/SnowEx%20Hackweek/2024/refl_measure.png)
+
+White references are usually small panels covered in Spectralon - a highly reflective, near-Lambertian substance that reflects and scatters nearly all incoming light equally in all directions.
+
+![<https://www.labsphere.com/product/spectralon-reflectance-targets/>](C:/Users/blueg/OneDrive/Grad%20School/SnowEx%20Hackweek/2024/spectralon.jpg)
+
+Surface reflectance allows us to identify varying surface types (e.g. vegetation, snow, water, etc.) as well as specific qualities of those surfaces (e.g., grain size or grain type in a snowpack). While similar measures, the surface reflectance and albedo of a surface can differ considerably, especially at low solar angles where the angle of direct incident light is far off nadir. Further, since snow reflectance is based on reflected light from a white reference, it is essential that the white reference is kept pristine for accurate measurement of surface reflectance.
+
+# Field Spectrometers
+
+![More field spectrometer measurements in the SnowEx 2023 Snow Albedo Campaign](C:/Users/blueg/OneDrive/Grad%20School/SnowEx%20Hackweek/2024/field_specs2.jpg)
+
+Field spectrometers are remote sensing instruments that are carried into the field by operators and used to measure surface reflectance and albedo. Field spectrometers are manufactured by many different companies and come in many more different models using different spectral ranges, attachments, and processing software. While it is difficult to account for these differences without instrument intercomparison studies, it is an important fact to keep in mind when comparing hyperspectral data from different spectrometers.
+
+```{r, echo=FALSE, include=FALSE}
+require(tidyverse)
+require(data.table)
+require(ggthemes)
+require(lubridate)
+require(leaflet)
+```
+
+# Data Loading and Description
+
+Let's load in the data. This is a BIG file so it may take some time...
+
+```{r}
+setwd(dirname(rstudioapi::getSourceEditorContext()$path))
+files <- list.files(pattern = ".csv")
+refl <- read.csv(files) 
+as_tibble(refl)
+```
+
+The dataset includes field spectrometer measurements of snow reflectance, snow albedo, and up- and down-facing bihemispherical radiance/irradiance measurements along with lots of associated metadata. The column descriptions are as follows:
+
+id: Unique ID number of measurement\ 
+date: The date of measurement collection\
+instrument: Code corresponding to the spectrometer identifier (S1 = Spectral Evolution; S2 & S7 = ASD FieldSpec4)\
+site: Code of study site (CARI = Caribou-Poker Creek; DEJU = Delta Junction, CRMF =  Creamer's Field)\
+transect: Code corresponding to transect where the measurement was taken (T1 = burned forest; T2 = forested; T3 = open)\
+type: The type of spectral measurement as recorded by the note taker (ssr = snow surface reflectance, albedo = calculated snow surface albedo, albedo_raw = up and down components of snow surface albedo, irr_raw = irradiance)\ 
+attachment: The fiber-optic attachment (8deg = 8 degree optic, 4deg = 4 degree optic, rcr = remote cosine receptor)\
+orientation: Facing of the fiber-optic attachment (down = down-facing, up = up-facing)\
+lat: Latitude of measurement as recorded by the GPS unit (epsg:4269)\
+long: Longitude of measurement as recorded by the GPS unit (epsg:4269)\
+spec_time: Local date and time of measurement as reported by spectrometer\
+depth: Snow depth in cm\
+depth_alt: Altitude as given by the GPS unit\
+depth_acc: Accuracy of GPS coordinates as recorded by the GPS unit\
+slope: Slope of the ground surface in degrees calculated from USGS 3DEP DEM (10m spatial resolution) using GIS software\
+aspect: Aspect of the ground surface in degrees calculated from USGS 3DEP DEM (10m spatial resolution) using GIS software\ 
+tags: Notes taken by notetaker with discrete notes seperated by "#"\
+rcr_group: Grouping variable for albedo and irradiance calculations\
+wavelength: Wavelength measured by spectrometer\
+value: Value measured by spectrometer at the given wavelength\
+
+# Data Preparation
+
+First, we replace -9999 (null) values with NA, set negative values to 0 and convert the date column to the "date" data type.
+
+```{r}
+refl <- refl %>%
+  mutate(across(where(is.numeric), ~if_else(.x == -9999, NA, .x))) %>%
+  mutate(value = if_else(value < 0, 0, value)) %>%
+  mutate(date = ymd(date))
+```
+
+Finally, we add some grouping variables to our dataset. These variables are fairly abitrary, but, broadly, transect(s) 1 went through burned forests, transect(s) went through unburned forests, and transect(s) 3 went through open areas. The season variable splits the data into three times spans over the field campaign.
+
+```{r}
+refl <- refl %>% 
+  # Landcover grouping column
+  mutate(landcover = if_else(site == "CRMF","open",
+                             if_else(transect == "T1", "burn",
+                                     if_else(transect == "T2", "forest", "open")))) %>%
+  # Season grouping column
+  mutate(season = if_else(date < ymd(20230415), "early",if_else(
+    date >= ymd(20230415) & date < ymd(20230421), "mid", "late"))) %>%
+  # Factor season so that it is in the right order
+  mutate(season = factor(season, levels = c("early", "mid", "late")))
+as_tibble(refl)
+```
+
+# Data Exploration: Measurement Locations
+
+Let's start exploring the data by mapping our measurement locations.
+
+```{r}
+pts <- refl %>%
+  filter(type == "ssr" | type == "albedo") %>%
+  distinct(id, .keep_all = T)
+
+pts.color <- colorFactor(
+  palette = c("ssr" = "Blue", "albedo" = "Orange"), 
+  domain = pts$type)
+
+leaflet() %>% 
+  addTiles() %>%
+  addCircleMarkers(
+    data = pts, 
+    color = ~pts.color(type), 
+    label = ~type,
+    radius = 1) %>%
+  addProviderTiles("Esri.WorldImagery")
+```
+
+# Data Exploration: Snow Surface Reflectance
+
+Let's take a look at just the reflectance data.
+
+First, we filter our data by snow surface reflectance (ssr) measurements only.
+
+```{r}
+refl_only <- refl %>%
+  filter(type == "ssr")
+
+as_tibble(refl_only)
+```
+
+Some of the measurements have exceptionally high reflectance values, so we filter out measurements where reflectance is too high in the visible range.
+
+```{r}
+refl_only <- refl_only %>%
+  group_by(id) %>% 
+  filter((!any(wavelength < 750 & value >= 1.2)) %>% replace_na(T))
+
+as_tibble(refl_only)
+```
+
+Finally, we plot all the reflectance data in a faceted plot.
+
+```{r}
+wvlim <- c(350,2200)
+reflim <- c(1e-5, 1.4)
+
+# Faceted snow surface reflectance plot
+plt <- ggplot(refl_only, 
+              aes(x = wavelength, y = value, group = id , color = landcover)) +
+  # Line plot
+  geom_line(size = 0.75) +
+  # Graph colors and axis limits
+  scale_color_discrete(type = c("darkorange", "darkgreen", "dodgerblue3")) +
+  scale_x_continuous(limits = wvlim, expand = c(.02, .1)) +
+  scale_y_continuous(limits = reflim, expand = expansion(mult = c(0, .1))) +
+  # X and Y labels
+  xlab("Wavelength (nm)") +
+  ylab("Snow Surface Reflectance") +
+  # Formatting
+  theme_bw() +
+  theme(
+    axis.text=element_text(size=8,face = "bold"),
+    axis.title=element_text(size=8,face = "bold"),
+    strip.text.x = element_text(
+      size = 8,
+      face = "bold"
+    ),
+    strip.text.y = element_text(
+      size = 8,
+      face = "bold"
+    )
+  ) +
+  # Facet plot by season and site
+  facet_grid(season ~ site)
+
+plt
+```
+
+# Data Exploration: Snow Surface Albedo
+
+Now, we'll focus on the albedo measurements specifically.
+
+First, we filter the dataset to include only albedo measurements. Second, we filter out measurements that were deemed low quality by the instrument operators.
+
+```{r}
+albd <- refl %>%
+  filter(type == "albedo" & (is.na(tags) | !str_detect(tags,"#bad#")))
+as_tibble(albd)
+```
+
+Let's plot the results (grouped by campaign period, transect, and landcover type) and see how our albedo measurements look.
+
+```{r}
+# Graph limits
+wvlim <- c(350,2200)
+reflim <- c(1e-5, 1.5)
+
+# Facetted albedo plot
+plt <- ggplot(albd, aes(x = wavelength, y = value, group = id , color = landcover)) +
+  # Line plot
+  geom_path(linewidth = 0.75) +
+  # Set colors and axis ranges
+  scale_color_discrete(type = c("darkorange", "darkgreen", "dodgerblue3")) +
+  scale_x_continuous(limits = wvlim, expand = c(.02, .1)) +
+  scale_y_continuous(limits = reflim, expand = expansion(mult = c(0, .1))) +
+  # Set axis labels
+  xlab("Wavelength (nm)") +
+  ylab("Snow Surface Albedo") +
+  # Formatting
+  theme_bw() +
+  theme(
+    axis.text=element_text(size=8,face = "bold"),
+    axis.title=element_text(size=8,face = "bold"),
+    strip.text.x = element_text(
+      size = 8,
+      face = "bold"
+    ),
+    strip.text.y = element_text(
+      size = 8,
+      face = "bold"
+    )
+  ) +
+  # Facet plot by season and site
+  facet_grid(season ~ site)
+
+plt
+```
+
+# Data Exploration: Snow Surface Albedo Summary
+
+Now, we can try summarizing the results with mean albedo and confidence intervals.
+
+```{r}
+albd_avg <- albd %>%
+  # Calculate average albedo and upper/lower quartiles
+  group_by(site, season, landcover,wavelength) %>%
+  summarise(albedo_avg = mean(value), margin = qt(0.975,df=(length(value)-1))*(sd(value))/sqrt(length(value)), n = length(unique(id))) %>%
+  ungroup() %>%
+  # Calculate 95% confidence intervals
+  mutate(ymax = albedo_avg + margin, ymin = albedo_avg - margin) %>%
+  # Moving around columns
+  relocate(c(site, season, landcover), .before = wavelength)
+```
+
+Aaaand, let's check out the results.
+
+```{r}
+# Graph limits
+wvlim <- c(350,2200)
+reflim <- c(1e-5, 1.15)
+
+# Facet plot of average SSA + 95% confidence intervals 
+plt <- ggplot(albd_avg, aes(x = wavelength, y = albedo_avg, color = landcover)) +
+  # Line plot with 95% conifidence "ribbons"
+  geom_line(linewidth = 0.75) +
+  geom_ribbon(aes(ymin = ymin, ymax = ymax, fill = landcover), 
+              alpha=0.1, 
+              linetype="dashed",
+              show.legend = F) +
+  # Set colors
+  scale_color_discrete(type = c("darkorange", "darkgreen", "dodgerblue3")) +
+  # Set axis limits
+  scale_x_continuous(limits = wvlim, expand = c(.02, .1)) +
+  scale_y_continuous(limits = reflim, expand = expansion(mult = c(0, .1))) +
+  # X and Y labels
+  xlab("Wavelength (nm)") +
+  ylab("Snow Surface Albedo") +
+  # Formatting
+  theme_bw() +
+  theme(
+    axis.text=element_text(size=8,face = "bold"),
+    axis.title=element_text(size=8,face = "bold"),
+    strip.text.x = element_text(
+      size = 8,
+      face = "bold"
+    ),
+    strip.text.y = element_text(
+      size = 8,
+      face = "bold"
+    )
+  ) +
+  # Facet plot by season and site
+  facet_grid(season ~ site)
+
+plt
+```
+
+\
+
+# Broadband Albedo
+
+Broadband albedo (BBA) is the ratio of upward and downward bi-hemispherical reflectance over a specific wavelength range. To calculate BBA, we weight the albedo at each band by the amount of incoming solar radiation (called irradiance) at that band and sum all results over the wavelength range. While albedo is calculated individually over each measurement band, calculations of BBA produce a single value of albedo over a given spectral range. Some common spectral ranges are shortwave BBA (0.25 μm to 5.0 μm), ultraviolet BBA (0.4 μm to 0.7 μm), and visible BBA (0.4 μm to 0.7 μm). Broadband albedo is important for calculating impurities in snowpack, especially ones that absorb light at all short wavelengths such as black carbon.
+
+# Data Exploration: Broadband Albedo
+
+Let's clean up irradiance measurements, apply corrections, and calculate irradiance weights
+
+```{r}
+irr <- refl %>%
+  # Only use "up"-facing RCR measurements
+  filter(orientation == "up") %>%
+  # Remove measurements deemed "bad" by the field team
+  filter((is.na(tags) | !str_detect(tags,"#bad#"))) %>%
+  # Filter out noisy NIR and SWIR wavelengths
+  filter(!(dplyr::between(wavelength, 1350,1420))) %>%
+  filter(!(dplyr::between(wavelength, 1820,1930))) %>%
+  filter(wavelength <= 2400) %>%
+  # Calculate the average irradiance on each day on each transect
+  group_by(date, instrument, site, transect, wavelength) %>%
+  summarise(value = mean(value, na.rm = T)) %>%
+  group_by(date, instrument, site, transect) %>%
+  # Calculate irradiance weights
+  summarise(weight = value/sum(value), wavelength) %>%
+  # Cleaning up
+  relocate(wavelength, .before = weight)
+
+as_tibble(irr)
+```
+
+Now we calculate shortwave BBA and clean up the new dataset.
+
+```{r}
+bba <- albd %>%
+  # Join the irradiance weights to the albedo dataset
+  left_join(irr, by = join_by(date,instrument,site, transect, wavelength)) %>%
+  # Apply irradiance weights to albedo measurements
+  mutate(value = value * weight, .keep = "unused") %>%
+  # Create a new ID column for later
+  mutate(id = paste(date, instrument, site, transect, rcr_group, sep = "_")) %>%
+  # Group and sum across spectrum to calculate BBA
+  group_by(date, instrument, site, transect, rcr_group) %>%
+  mutate(bba = sum(value, na.rm = T),
+         .keep = "unused") %>%
+  # Drop BBA results that are greater than 1
+  filter(bba < 1) %>%
+  # Drop the wavelength column as it is no longer needed
+  select(-wavelength) %>%
+  # Remove any duplicate measurements based on the ID we created earlier
+  distinct(id, .keep_all = T)
+
+as_tibble(bba)
+```
+
+Let's make a summary plot.
+
+```{r}
+# Graph limits
+bbalim <- c(0, 1)
+
+# Faceted boxplot (BBA)
+plt <- ggplot(bba, aes(x = transect, y = bba, fill = landcover)) +
+  # Boxplot
+  geom_boxplot() +
+  # Choose colors
+  scale_fill_manual(values = c("darkorange", "darkgreen", "dodgerblue3")) +
+  # Set graph limits
+  scale_y_continuous(limits = bbalim, expand = expansion(mult = c(0, .1))) +
+  # X and Y labels
+  xlab("Transect") +
+  ylab("Broadband Albedo (350-2400 nm)") +
+  # Formatting
+  theme_bw() +
+  theme(
+    axis.text=element_text(size=8,face = "bold"),
+    axis.title=element_text(size=8,face = "bold"),
+    strip.text.x = element_text(
+      size = 8,
+      face = "bold"
+    ),
+    strip.text.y = element_text(
+      size = 8,
+      face = "bold"
+    )
+  ) +
+  # Facet plot by season and site
+  facet_grid(factor(season, levels = c("early", "mid", "late")) ~ site)
+
+plt
+```
+
+# Wrapping it up
+
+## What we learned:
+
+-Basic intro on how to access and prepare the SnowEx 2023 Snow Albedo dataset\
+-How to map points and filter the dataset for specific types of data\
+-How to plot and summarize snow surface reflectance and snow albedo\
+-How to calculate and summarize broadband albedo\
