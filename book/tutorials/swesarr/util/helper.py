@@ -8,6 +8,39 @@ def sind(a):
 def tand(a):
     return np.tan( a * np.pi/180 )
 
+def get_out_dir():
+    '''
+    choose an output directory based on operating system.
+
+    for remote linux servers, the /tmp directory may use SSDs for faster read/write speeds.
+    when running on windows, simply store in the local directory
+    '''
+    import platform, shutil, glob, os
+    
+    # git repo should include a small CSV of data by default. this will either be the
+    # output directory or be copied to /tmp/ if linux
+    output_dir = os.getcwd() + '/data/'
+    try:
+        os.makedirs(output_dir)
+    except FileExistsError:
+        print('output directory prepared!')
+
+    # linux operations
+    cur_sys = platform.system()
+    if cur_sys.lower() == 'linux':
+        tmp_dir = '/tmp/'
+
+        # copy any files that may exist 
+        cur_files = glob.glob(output_dir + '*')
+        for file in cur_files:
+            shutil.copy2(file, tmp_dir)
+        # change output directory to /tmp/
+        output_dir = tmp_dir
+    
+    return output_dir
+        
+        
+
 def gdal_corners(filename):
     '''
     a function  that can be used to determine the boundary of a raster / tif file.
