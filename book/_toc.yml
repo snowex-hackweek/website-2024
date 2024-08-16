@@ -24,11 +24,18 @@ parts:
           title: Albedo
           sections:
             - file: tutorials/albedo/aviris-ng-data
+        - file: tutorials/Data_access/index.md
+          title: Data Access
+          sections:
+            - file: tutorials/Data_access/overview.md
+            - file: tutorials/Data_access/NSIDC_resources.md
+            - file: tutorials/Data_access/earthdata_search.md
+            - file: tutorials/Data_access/earthaccess_snowex.ipynb
+            - file: tutorials/Data_access/earthaccess_icesat2.ipynb
         - file: tutorials/swesarr/index
           title: SWESARR
           sections:
             - file: tutorials/swesarr/swesarr_tut
-
 - caption: Projects
   chapters:
     - file: projects/index
