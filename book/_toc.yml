@@ -20,10 +20,12 @@ parts:
     - file: tutorials/index
       sections:
         - file: tutorials/example/tutorial-notebook
-        - file: tutorials/albedo/index
-          title: Albedo
+        - file: tutorials/snowex-core/index
+          title: Data Overview
           sections:
-            - file: tutorials/albedo/aviris-ng-data
+            - file: tutorials/snowex-core/01_snowex_data_overview
+            - file: tutorials/snowex-core/02_snowex_data_descriptions
+            - file: tutorials/snowex-core/03_snowex_data_preview  
         - file: tutorials/Data_access/index.md
           title: Data Access
           sections:
@@ -45,6 +47,10 @@ parts:
           title: SWESARR
           sections:
             - file: tutorials/swesarr/swesarr_tut
+        - file: tutorials/albedo/index
+          title: Albedo
+          sections:
+            - file: tutorials/albedo/aviris-ng-data
 - caption: Projects
   chapters:
     - file: projects/index
@@ -53,4 +59,6 @@ parts:
     - file: reference/glossary
     - file: reference/bibliography
     - file: reference/questions
+
+    
 
