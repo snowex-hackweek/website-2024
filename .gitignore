@@ -1,4 +1,6 @@
 .DS_Store
+# Temporary Tutorial Content
+.book/tutorials/snowex-core/Downloads
 
 # Jupyter Book things
 .bash_history
