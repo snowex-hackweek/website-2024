@@ -34,6 +34,15 @@ parts:
             - file: tutorials/Data_access/earthdata_search.md
             - file: tutorials/Data_access/earthaccess_snowex.ipynb
             - file: tutorials/Data_access/earthaccess_icesat2.ipynb
+        - file: tutorials/snowex_database/index
+          title: Introduction to the SnowEx Database
+          sections:
+            - file: tutorials/snowex_database/1_getting_started_example
+            - file: tutorials/snowex_database/2_database_structure
+            - file: tutorials/snowex_database/3_forming_queries
+            - file: tutorials/snowex_database/4_get_spiral_example
+            - file: tutorials/snowex_database/5_plot_raster_example
+            - file: tutorials/snowex_database/6_wrap_up
         - file: tutorials/swesarr/index
           title: SWESARR
           sections:
