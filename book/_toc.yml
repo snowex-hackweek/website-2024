@@ -19,7 +19,6 @@ parts:
   chapters:
     - file: tutorials/index
       sections:
-        - file: tutorials/example/tutorial-notebook
         - file: tutorials/snowex-core/index
           title: Data Overview
           sections:
