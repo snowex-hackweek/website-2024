@@ -34,6 +34,7 @@ execute:
   execute_notebooks: 'force'
   exclude_patterns:
     - "**/aviris-ng-data.ipynb"
+    - "**/earthaccess_icesat2.ipynb"
   allow_errors: false
   # Per-cell notebook execution limit (seconds)
   timeout: 300
