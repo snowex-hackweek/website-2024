@@ -19,6 +19,8 @@ parts:
   chapters:
     - file: tutorials/index
       sections:
+        - title: Mission Overview
+          url: https://docs.google.com/presentation/d/1mVkyBy8LxmcKe6Idcs1ruapH_AqhpJ1v
         - file: tutorials/snowex-core/index
           title: Data Overview
           sections:
