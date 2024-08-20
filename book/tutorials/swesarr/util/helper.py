@@ -455,7 +455,7 @@ def rough_radiom_area(radiom, rad_swe, fp_10m, fp_18m, fp_37m):
     import cartopy.crs as ccrs
     
     crs = ccrs.UTM(zone='12') #12n
-    transparent_tile = hv.Tiles('https://tile.openstreetmap.org/{Z}/{X}/{Y}.png', name="OSM").opts(alpha=0.0)
+    transparent_tile = hv.Tiles('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Reference_Overlay/MapServer/tile/{Z}/{Y}/{X}', name="EsriReference").opts(alpha=0.0)
     
     beg_i = radiom['UTC'].argmin()
     end_i = radiom['UTC'].argmax()
