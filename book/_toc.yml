@@ -19,11 +19,14 @@ parts:
   chapters:
     - file: tutorials/index
       sections:
-        - file: tutorials/example/tutorial-notebook
-        - file: tutorials/albedo/index
-          title: Albedo
+        - title: Mission Overview
+          url: https://docs.google.com/presentation/d/1mVkyBy8LxmcKe6Idcs1ruapH_AqhpJ1v
+        - file: tutorials/snowex-core/index
+          title: Data Overview
           sections:
-            - file: tutorials/albedo/aviris-ng-data
+            - file: tutorials/snowex-core/01_snowex_data_overview
+            - file: tutorials/snowex-core/02_snowex_data_descriptions
+            - file: tutorials/snowex-core/03_snowex_data_preview  
         - file: tutorials/Data_access/index.md
           title: Data Access
           sections:
@@ -32,10 +35,23 @@ parts:
             - file: tutorials/Data_access/earthdata_search.md
             - file: tutorials/Data_access/earthaccess_snowex.ipynb
             - file: tutorials/Data_access/earthaccess_icesat2.ipynb
+        - file: tutorials/snowex_database/index
+          title: Introduction to the SnowEx Database
+          sections:
+            - file: tutorials/snowex_database/1_getting_started_example
+            - file: tutorials/snowex_database/2_database_structure
+            - file: tutorials/snowex_database/3_forming_queries
+            - file: tutorials/snowex_database/4_get_spiral_example
+            - file: tutorials/snowex_database/5_plot_raster_example
+            - file: tutorials/snowex_database/6_wrap_up
         - file: tutorials/swesarr/index
           title: SWESARR
           sections:
             - file: tutorials/swesarr/swesarr_tut
+        - file: tutorials/albedo/index
+          title: Albedo
+          sections:
+            - file: tutorials/albedo/aviris-ng-data
 - caption: Projects
   chapters:
     - file: projects/index
@@ -44,4 +60,6 @@ parts:
     - file: reference/glossary
     - file: reference/bibliography
     - file: reference/questions
+
+    
 
