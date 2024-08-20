@@ -35,6 +35,8 @@ execute:
   exclude_patterns:
     - "**/aviris-ng-data.ipynb"
     - "**/earthaccess_icesat2.ipynb"
+    - "**/field_albedo.html"
+    - "**/field_albedo.Rmd"
   allow_errors: false
   # Per-cell notebook execution limit (seconds)
   timeout: 300
