@@ -26,7 +26,7 @@ parts:
           sections:
             - file: tutorials/snowex-core/01_snowex_data_overview
             - file: tutorials/snowex-core/02_snowex_data_descriptions
-            - file: tutorials/snowex-core/03_snowex_data_preview  
+            - file: tutorials/snowex-core/03_snowex_data_preview
         - file: tutorials/Data_access/index.md
           title: Data Access
           sections:
@@ -52,6 +52,7 @@ parts:
           title: Albedo
           sections:
             - file: tutorials/albedo/aviris-ng-data
+            - file: tutorials/albedo/field_albedo
 - caption: Projects
   chapters:
     - file: projects/index
@@ -61,5 +62,5 @@ parts:
     - file: reference/bibliography
     - file: reference/questions
 
-    
+
 
