@@ -54,6 +54,14 @@ parts:
           title: Albedo
           sections:
             - file: tutorials/albedo/aviris-ng-data
+        - file: tutorials/NN_with_Pytorch/intro
+          title: Neural Networks with Pytorch
+          sections:
+            - file: tutorials/NN_with_Pytorch/00_ML_refresher
+            - file: tutorials/NN_with_Pytorch/01_Neural_Networks_Basics
+            - file: tutorials/NN_with_Pytorch/02_Pytorch_Basics
+            - file: tutorials/NN_with_Pytorch/03_Data_Download_And_Cleaning
+            - file: tutorials/NN_with_Pytorch/04_Building_And_Training_FFN
 - caption: Projects
   chapters:
     - file: projects/index
