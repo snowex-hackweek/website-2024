@@ -17,9 +17,9 @@ Here is our current list of project for our {{dates}} {{ hackweek }} hackweek:
 
 | Project Name (with link to GitHub repo)                                             |
 |:------------------------------------------------------------------------------------|
-| (FMI project)[https://github.com/snowex-hackweek/NASA-UW-Hackweek-2024-FMI-Project] |
-| (Data Set Map Tool)[https://github.com/snowex-hackweek/SnowEx-Map-Tool]             |
-| (DB Re-Structure)[https://github.com/snowex-hackweek/db-re-structure]               |
-| (MicroSnowEx)[https://github.com/snowex-hackweek/microsnowex2024]                   |
-| (SWESARR)[https://github.com/snowex-hackweek/swesarr]                               |
-| (Snowmelt Timing)[https://github.com/snowex-hackweek/snowmelt-timing-2024]          |
+| [FMI project](https://github.com/snowex-hackweek/NASA-UW-Hackweek-2024-FMI-Project) |
+| [Data Set Map Tool](https://github.com/snowex-hackweek/SnowEx-Map-Tool)             |
+| [DB Re-Structure](https://github.com/snowex-hackweek/db-re-structure)               |
+| [MicroSnowEx](https://github.com/snowex-hackweek/microsnowex2024)                   |
+| [SWESARR](https://github.com/snowex-hackweek/swesarr)                               |
+| [Snowmelt Timing](https://github.com/snowex-hackweek/snowmelt-timing-2024)          |
