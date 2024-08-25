@@ -17,7 +17,6 @@ parse:
     slack_workspace_url: "https://2024-uw-hackweek.slack.com"
     contact_email: "escience-hackweeks@uw.edu"
     anon_reporting_url: "https://INSERT_FORM_LINK"
-    project_spreadsheet_url: "https://INSERT_GOOGLE_SHEET"
   myst_enable_extensions:
     # Defaults
     - dollarmath
@@ -31,7 +30,7 @@ parse:
 # See https://jupyterbook.org/content/execute.html
 execute:
   # NOTE: 'cache' to use jupyter-cache, or 'force' to run all
-  execute_notebooks: 'force'
+  execute_notebooks: 'cache'
   exclude_patterns:
     - "**/aviris-ng-data.ipynb"
     - "**/earthaccess_icesat2.ipynb"
