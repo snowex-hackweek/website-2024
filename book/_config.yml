@@ -30,7 +30,7 @@ parse:
 # See https://jupyterbook.org/content/execute.html
 execute:
   # NOTE: 'cache' to use jupyter-cache, or 'force' to run all
-  execute_notebooks: 'force'
+  execute_notebooks: 'cache'
   exclude_patterns:
     - "**/aviris-ng-data.ipynb"
     - "**/earthaccess_icesat2.ipynb"
