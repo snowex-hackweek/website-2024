@@ -26,7 +26,7 @@ parts:
           sections:
             - file: tutorials/snowex-core/01_snowex_data_overview
             - file: tutorials/snowex-core/02_snowex_data_descriptions
-            - file: tutorials/snowex-core/03_snowex_data_preview  
+            - file: tutorials/snowex-core/03_snowex_data_preview
         - file: tutorials/Data_access/index.md
           title: Data Access
           sections:
@@ -62,6 +62,12 @@ parts:
             - file: tutorials/NN_with_Pytorch/02_Pytorch_Basics
             - file: tutorials/NN_with_Pytorch/03_Data_Download_And_Cleaning
             - file: tutorials/NN_with_Pytorch/04_Building_And_Training_FFN
+        - title: From notebooks to packages
+          url: https://icesat-2-2024.hackweek.io/tutorials/nb-to-package/index.html
+        - title: Putting open science into practice
+          url: https://icesat-2-2024.hackweek.io/tutorials/open-science/index.html
+        - title: Mental Health in the Geosciences
+          url: https://icesat-2-2024.hackweek.io/tutorials/mental-health/index.html
 - caption: Projects
   chapters:
     - file: projects/index
@@ -71,5 +77,5 @@ parts:
     - file: reference/bibliography
     - file: reference/questions
 
-    
+
 
