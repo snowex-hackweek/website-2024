@@ -54,6 +54,7 @@ parts:
           title: Albedo
           sections:
             - file: tutorials/albedo/aviris-ng-data
+            - file: tutorials/albedo/snow_albedo
         - file: tutorials/NN_with_Pytorch/intro
           title: Neural Networks with Pytorch
           sections:
