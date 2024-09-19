@@ -48,7 +48,7 @@ parts:
           title: SWESARR
           sections:
             - file: tutorials/swesarr/swesarr_tut
-        - file: tutorials/GPR_Lidar_HackweekTutorial
+        - file: tutorials/gpr_lidar/GPR_Lidar_HackweekTutorial
           title: GPR and Lidar for Snow Parameter Retrieval
         - file: tutorials/albedo/index
           title: Albedo
