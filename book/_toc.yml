@@ -64,6 +64,8 @@ parts:
             - file: tutorials/NN_with_Pytorch/04_Building_And_Training_FFN
         - title: From notebooks to packages
           url: https://icesat-2-2024.hackweek.io/tutorials/nb-to-package/index.html
+        - title: Cloud Computing
+          url: https://icesat-2-2024.hackweek.io/tutorials/cloud-computing/00-goals-and-outline.html
         - title: Putting open science into practice
           url: https://icesat-2-2024.hackweek.io/tutorials/open-science/index.html
         - title: Mental Health in the Geosciences
